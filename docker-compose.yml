@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  # PostgreSQL 数据库
+  db:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: myapp_db
+      POSTGRES_USER: myapp_user
+      POSTGRES_PASSWORD: myapp_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U myapp_user -d myapp_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Redis (可选，用于缓存)
+  redis:
+    image: redis:7-alpine
+    container_name: redis-cache
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+  # 应用服务
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-fullstack-app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://myapp_user:myapp_password@db:5432/myapp_db
+      - REDIS_URL=redis://redis:6379/0
+      - PYTHONPATH=/app
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - app-network
+    volumes:
+      # 开发时可以挂载代码目录，生产环境建议注释掉
+      # - ./backend:/app:ro
+      - app_logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # 数据库迁移服务（一次性运行）
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app-migrate
+    environment:
+      - DATABASE_URL=postgresql://myapp_user:myapp_password@db:5432/myapp_db
+      - PYTHONPATH=/app
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+    command: ["alembic", "upgrade", "head"]
+    restart: "no"
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  app_logs:
+    driver: local

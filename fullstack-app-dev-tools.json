@@ -1,0 +1,37 @@
+{
+  "name": "fullstack-app-dev-tools",
+  "version": "1.0.0",
+  "description": "开发环境管理工具",
+  "scripts": {
+    "dev:setup": "./setup-dev.sh",
+    "dev:clean": "./setup-dev.sh --clean",
+    "dev:frontend": "./start-frontend.sh",
+    "dev:backend": "./start-backend.sh",
+    "dev:database": "./start-database.sh",
+    "dev:all": "concurrently \"npm run dev:database\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "docker:build": "./deploy.sh --rebuild",
+    "docker:up": "./deploy-compose.sh",
+    "docker:down": "./deploy-compose.sh --stop",
+    "docker:logs": "./deploy-compose.sh --logs",
+    "db:migrate": "cd backend && source venv/bin/activate && alembic upgrade head",
+    "db:revision": "cd backend && source venv/bin/activate && alembic revision --autogenerate -m",
+    "install:all": "npm run install:frontend && npm run install:backend",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && source venv/bin/activate && uv pip install -r requirements.txt",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && source venv/bin/activate && flake8 .",
+    "test:frontend": "cd frontend && npm test",
+    "test:backend": "cd backend && source venv/bin/activate && pytest",
+    "build:frontend": "cd frontend && npm run build",
+    "clean:all": "npm run clean:frontend && npm run clean:backend",
+    "clean:frontend": "cd frontend && rm -rf node_modules package-lock.json dist",
+    "clean:backend": "cd backend && rm -rf venv __pycache__ .pytest_cache"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}

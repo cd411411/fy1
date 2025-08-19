@@ -1,0 +1,111 @@
+{
+  "basicInfo": {
+    "caseNumber": "string | null (从答辩状中提取案号)"
+  },
+  "respondent_natural": [
+    {
+      "name": "string (答辩人姓名)",
+      "gender": "'男' or '女' or null (答辩人性别)",
+      "birthDate": "string (YYYY-MM-DD格式的出生日期)",
+      "nation": "string (答辩人民族)",
+      "workUnit": "string (答辩人工作单位)",
+      "title": "string (答辩人职务)",
+      "phone": "string (答辩人联系电话)",
+      "address": "string (答辩人住所地/户籍所在地)",
+      "currentAddress": "string (答辩人经常居住地)",
+      "idType": "string (答辩人证件类型，如'身份证')",
+      "idNumber": "string (答辩人证件号码)"
+    }
+  ],
+  "respondent_legal": [
+    {
+      "entityName": "string (法人或非法人组织名称)",
+      "entityAddress": "string (住所地)",
+      "registeredAddress": "string (注册地/登记地)",
+      "legalRepName": "string (法定代表人/负责人姓名)",
+      "legalRepTitle": "string (法定代表人/负责人职务)",
+      "entityPhone": "string (联系电话)",
+      "entityId": "string (统一社会信用代码)",
+      "entityType": "string (从'有限责任公司', '股份有限公司', '上市公司', '其他企业法人', '事业单位', '社会团体', '基金会', '社会服务机构', '机关法人', '农村集体经济组织法人', '城镇农村的合作经济组织法人', '基层群众性自治组织法人', '个人独资企业', '合伙企业', '不具有法人资格的专业服务机构'中选择一个)",
+      "ownership": {
+        "mainType": "'国有' or '民营' or '其他' or null (所有制性质)",
+        "stateOwnedSubType": "'控股' or '参股' or null (仅当mainType为'国有'时填写)",
+        "otherDetails": "string | null (仅当mainType为'其他'时填写具体内容)"
+      }
+    }
+  ],
+  "agents": [
+    {
+      "hasAgent": "'是' or '否' (是否有委托诉讼代理人)",
+      "agentName": "string | null (代理人姓名)",
+      "agentUnit": "string | null (代理人单位)",
+      "agentTitle": "string | null (代理人职务)",
+      "agentPhone": "string | null (代理人联系电话)",
+      "agentAuthorityType": "'一般授权' or '特别授权' or null (代理权限)"
+    }
+  ],
+  "defenses": {
+    "fullStatement": "string | null (完整的答辩事项陈述)",
+    "d1_stopInfringement": {
+      "hasObjection": "'有' or '无' or null (对停止侵害诉讼请求是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d2_removeObstruction": {
+      "hasObjection": "'有' or '无' or null (对排除妨碍诉讼请求是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d3_eliminateDanger": {
+      "hasObjection": "'有' or '无' or null (对消除环境危险诉讼请求是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d4_restoreEnvironment": {
+      "hasObjection": "'有' or '无' or null (对修复生态环境诉讼请求是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d5_compensateLoss": {
+      "hasObjection": "'有' or '无' or null (对赔偿损失诉讼请求是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d6_publicApology": {
+      "hasObjection": "'有' or '无' or null (对赔礼道歉诉讼请求是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d7_otherClaims": {
+      "hasObjection": "'有' or '无' or null (对其他诉讼请求是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    }
+  },
+  "facts": {
+    "fullStatement": "string | null (完整的事实与理由陈述)",
+    "f1_plaintiffStanding": {
+      "hasObjection": "'有' or '无' or null (对原告主体资格是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f2_pollutionAct": {
+      "hasObjection": "'有' or '无' or null (对环境污染行为是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f3_damageFactOrRisk": {
+      "hasObjection": "'有' or '无' or null (对造成损害事实或重大风险是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f4_causation": {
+      "hasObjection": "'有' or '无' or null (对污染行为与损害结果之间的因果关系是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f5_exemptions": {
+      "hasObjection": "'有' or '无' or null (有无其他免责/减轻责任的事由)",
+      "details": "string | null (如有，请填写具体事由)"
+    },
+    "f6_legalBasis": {
+      "legal": "string | null (答辩所依据的法律、行政法规等规定)"
+    },
+    "f7_otherExplanations": {
+      "hasObjection": "'有' or '无' or null (是否有其他需要说明的内容)",
+      "details": "string | null (如有，请填写具体说明内容)"
+    },
+    "f8_evidenceList": {
+      "content": "string | null (证据清单，例如合法经营、已修复环境的证据、质证意见等)"
+    }
+  }
+}

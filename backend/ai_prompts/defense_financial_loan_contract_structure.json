@@ -1,0 +1,159 @@
+{
+  "basicInfo": {
+    "caseNumber": "string | null (从答辩状中提取案号)"
+  },
+  "respondent_natural": [
+    {
+      "name": "string (答辩人姓名)",
+      "gender": "'男' or '女' or null (答辩人性别)",
+      "birthDate": "string (YYYY-MM-DD格式的出生日期)",
+      "nation": "string (答辩人民族)",
+      "workUnit": "string (答辩人工作单位)",
+      "title": "string (答辩人职务)",
+      "phone": "string (答辩人联系电话)",
+      "address": "string (答辩人住所地/户籍所在地)",
+      "currentAddress": "string (答辩人经常居住地)",
+      "idType": "string (答辩人证件类型，如'身份证')",
+      "idNumber": "string (答辩人证件号码)"
+    }
+  ],
+  "respondent_legal": [
+    {
+      "entityName": "string (法人或非法人组织名称)",
+      "entityAddress": "string (住所地)",
+      "registeredAddress": "string (注册地/登记地)",
+      "legalRepName": "string (法定代表人/负责人姓名)",
+      "legalRepTitle": "string (法定代表人/负责人职务)",
+      "entityPhone": "string (联系电话)",
+      "entityId": "string (统一社会信用代码)",
+      "entityType": "string (从'有限责任公司', '股份有限公司', '上市公司', '其他企业法人', '事业单位', '社会团体', '基金会', '社会服务机构', '机关法人', '农村集体经济组织法人', '城镇农村的合作经济组织法人', '基层群众性自治组织法人', '个人独资企业', '合伙企业', '不具有法人资格的专业服务机构'中选择一个)",
+      "ownership": {
+        "mainType": "'国有' or '民营' or '其他' or null (所有制性质)",
+        "stateOwnedSubType": "'控股' or '参股' or null (仅当mainType为'国有'时填写)",
+        "otherDetails": "string | null (仅当mainType为'其他'时填写具体内容)"
+      }
+    }
+  ],
+  "agents": [
+    {
+      "hasAgent": "'是' or '否' (是否有委托诉讼代理人)",
+      "agentName": "string | null (代理人姓名)",
+      "agentUnit": "string | null (代理人单位)",
+      "agentTitle": "string | null (代理人职务)",
+      "agentPhone": "string | null (代理人联系电话)",
+      "agentAuthorityType": "'一般授权' or '特别授权' or null (代理权限)"
+    }
+  ],
+  "defenses": {
+    "fullStatement": "string | null (完整的答辩事项陈述)",
+    "d1_principal": {
+      "hasObjection": "'有' or '无' or null (对本金是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d2_interest": {
+      "hasObjection": "'有' or '无' or null (对利息、复利、罚息是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d3_repaymentOrTermination": {
+      "hasObjection": "'有' or '无' or null (对提前还款或解除合同是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d4_securityInterest": {
+      "hasObjection": "'有' or '无' or null (对担保权利诉请是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d5_enforcementCosts": {
+      "hasObjection": "'有' or '无' or null (对实现债权的费用是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d6_otherClaims": {
+      "hasObjection": "'有' or '无' or null (对其他请求是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d7_totalAmount": {
+      "hasObjection": "'有' or '无' or null (对标的总额是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    }
+  },
+  "facts": {
+    "fullStatement": "string | null (完整的事实与理由陈述)",
+    "f1_contractSigning": {
+      "hasObjection": "'有' or '无' or null (对合同签订情况是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f2_contractParties": {
+      "hasObjection": "'有' or '无' or null (对合同主体是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f3_loanAmount": {
+      "hasObjection": "'有' or '无' or null (对借款金额是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f4_loanTerm": {
+      "hasObjection": "'有' or '无' or null (对借款期限是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f5_interestRate": {
+      "hasObjection": "'有' or '无' or null (对借款利率是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f6_disbursementDate": {
+      "hasObjection": "'有' or '无' or null (对借款发放时间是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f7_repaymentMethod": {
+      "hasObjection": "'有' or '无' or null (对还款方式是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f8_repaymentStatus": {
+      "hasObjection": "'有' or '无' or null (对还款情况是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f9_overdueStatus": {
+      "hasObjection": "'有' or '无' or null (对是否逾期还款是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f10_collateralContract": {
+      "hasObjection": "'有' or '无' or null (对是否签订物的担保合同是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f11_guarantorAndCollateral": {
+      "hasObjection": "'有' or '无' or null (对担保人、担保物是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f12_maximumMortgage": {
+      "hasObjection": "'有' or '无' or null (对最高额抵押担保是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f13_registrationStatus": {
+      "hasObjection": "'有' or '无' or null (对是否办理抵押/质押登记是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f14_guaranteeContract": {
+      "hasObjection": "'有' or '无' or null (对是否签订保证合同/保函是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f15_guaranteeType": {
+      "hasObjection": "'有' or '无' or null (对保证方式是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f16_otherSecurity": {
+      "hasObjection": "'有' or '无' or null (对其他担保方式是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f17_otherExemptions": {
+      "hasObjection": "'有' or '无' or null (有无其他免责/减责事由)",
+      "details": "string | null (如有，请填写具体事由)"
+    },
+    "f18_legalBasis": {
+      "contract": "string | null (合同中的相关约定)",
+      "legal": "string | null (法律规定，要写明具体条文)"
+    },
+    "f19_otherExplanations": {
+      "content": "string | null (其他需要说明的内容)"
+    },
+    "f20_evidenceList": {
+      "content": "string | null (证据清单，可另附页)"
+    }
+  }
+}

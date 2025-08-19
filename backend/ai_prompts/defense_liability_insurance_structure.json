@@ -1,0 +1,92 @@
+{
+  "basicInfo": {
+    "caseNumber": "string | null (从答辩状中提取案号)"
+  },
+  "respondent_legal": [
+    {
+      "entityName": "string (法人或非法人组织名称)",
+      "entityAddress": "string (住所地)",
+      "registeredAddress": "string (注册地/登记地)",
+      "legalRepName": "string (法定代表人/负责人姓名)",
+      "legalRepTitle": "string (法定代表人/负责人职务)",
+      "entityPhone": "string (联系电话)",
+      "entityId": "string (统一社会信用代码)",
+      "entityType": "string (从'有限责任公司', '股份有限公司', '上市公司', '其他企业法人', '事业单位', '社会团体', '基金会', '社会服务机构', '机关法人', '农村集体经济组织法人', '城镇农村的合作经济组织法人', '基层群众性自治组织法人', '个人独资企业', '合伙企业', '不具有法人资格的专业服务机构'中选择一个)",
+      "ownership": {
+        "mainType": "'国有' or '民营' or '其他' or null (所有制性质)",
+        "stateOwnedSubType": "'控股' or '参股' or null (仅当mainType为'国有'时填写)",
+        "otherDetails": "string | null (仅当mainType为'其他'时填写具体内容)"
+      }
+    }
+  ],
+  "agents": [
+    {
+      "hasAgent": "'是' or '否' (是否有委托诉讼代理人)",
+      "agentName": "string | null (代理人姓名)",
+      "agentUnit": "string | null (代理人单位)",
+      "agentTitle": "string | null (代理人职务)",
+      "agentPhone": "string | null (代理人联系电话)",
+      "agentAuthorityType": "'一般授权' or '特别授权' or null (代理权限)"
+    }
+  ],
+  "defenses": {
+    "fullStatement": "string | null (完整的答辩事项陈述)",
+    "d1_claimAmount": {
+      "hasObjection": "'有' or '无' or null (对理赔款是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d2_enforcementCosts": {
+      "hasObjection": "'有' or '无' or null (对实现债权的费用是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d3_otherClaims": {
+      "hasObjection": "'有' or '无' or null (对其他请求是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d4_totalAmount": {
+      "hasObjection": "'有' or '无' or null (对标的总额是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    }
+  },
+  "facts": {
+    "fullStatement": "string | null (完整的事实与理由陈述)",
+    "f1_contractSigning": {
+      "hasObjection": "'有' or '无' or null (对责任保险合同的签订情况是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f2_contractTerms": {
+      "hasObjection": "'有' or '无' or null (对责任保险合同的主要约定是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f3_termsExplanation": {
+      "hasObjection": "'有' or '无' or null (对就重大利害关系条款进行提示说明是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f4_incidentOccurrence": {
+      "hasObjection": "'有' or '无' or null (对保险事故发生的情况是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f5_lossDetails": {
+      "hasObjection": "'有' or '无' or null (对具体损失项目及其数额是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f6_contractPerformance": {
+      "hasObjection": "'有' or '无' or null (对责任保险合同的履行情况是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f7_otherExemptions": {
+      "hasObjection": "'有' or '无' or null (有无其他免责/减责事由)",
+      "details": "string | null (如有，请填写具体事由)"
+    },
+    "f8_legalBasis": {
+      "contract": "string | null (合同中的相关约定)",
+      "legal": "string | null (法律规定，要写明具体条文)"
+    },
+    "f9_otherExplanations": {
+      "content": "string | null (其他需要说明的内容)"
+    },
+    "f10_evidenceList": {
+      "content": "string | null (证据清单，可另附页)"
+    }
+  }
+}
