@@ -76,7 +76,7 @@ services:
       retries: 5
 
   qdrant:
-    image: qdrant/qdrant:latest
+    image: reg.qiniu.com/qdrant/qdrant:latest
     container_name: complaint_generator_qdrant
     restart: unless-stopped
     ports:
