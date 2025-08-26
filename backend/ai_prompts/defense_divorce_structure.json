@@ -1,0 +1,71 @@
+{
+  "basicInfo": {
+    "caseCause": "string (从答辩状中提取案由，例如 '离婚纠纷')",
+    "caseNumber": "string | null (从答辩状中提取案号)"
+  },
+  "defendants_natural": [
+    {
+      "name": "string (答辩人姓名)",
+      "gender": "'男' or '女' or null (答辩人性别)",
+      "birthDate": "string (YYYY-MM-DD格式的出生日期)",
+      "nation": "string (答辩人民族)",
+      "workUnit": "string (答辩人工作单位)",
+      "title": "string (答辩人职务)",
+      "phone": "string (答辩人联系电话)",
+      "address": "string (答辩人住所地/户籍所在地)",
+      "currentAddress": "string (答辩人经常居住地)",
+      "idType": "string (答辩人证件类型，如'身份证')",
+      "idNumber": "string (答辩人证件号码)"
+    }
+  ],
+  "agents": [
+    {
+      "hasAgent": "'是' or '否' (是否有委托诉讼代理人)",
+      "agentName": "string | null (代理人姓名)",
+      "agentUnit": "string | null (代理人单位)",
+      "agentTitle": "string | null (代理人职务)",
+      "agentPhone": "string | null (代理人联系电话)",
+      "agentAuthorityType": "'一般授权' or '特别授权' or null (代理权限)"
+    }
+  ],
+  "defenses": {
+    "fullStatement": "string | null (完整的答辩事项陈述)",
+    "f1": {
+      "hasObjection": "'有' or '无' or null (对解除婚姻关系是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f2": {
+      "hasObjection": "'有' or '无' or null (对夫妻共同财产诉请是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f3": {
+      "hasObjection": "'有' or '无' or null (对夫妻共同债务诉请是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f4": {
+      "hasObjection": "'有' or '无' or null (对子女直接抚养诉请是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f5": {
+      "hasObjection": "'有' or '无' or null (对子女抚养费诉请是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f6": {
+      "hasObjection": "'有' or '无' or null (对子女探望权诉请是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f7": {
+      "hasObjection": "'有' or '无' or null (对赔偿/补偿/经济帮助诉请是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f8": {
+      "content": "string | null (其他需要答辩的事由)"
+    },
+    "f9": {
+      "legal": "string | null (答辩所依据的法律条文)"
+    },
+    "f10": {
+      "content": "string | null (证据清单，可另附页)"
+    }
+  }
+}

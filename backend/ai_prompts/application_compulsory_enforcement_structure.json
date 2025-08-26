@@ -1,0 +1,109 @@
+{
+    "basis": {
+        "docType": {
+            "selected": "可选：民事类：'civil-判决书', 'civil-裁定书', 'civil-调解书', 'civil-制裁决定', 'civil-支付令'; 刑事类：'criminal-刑事附带民事判决书', 'criminal-刑事附带民事裁定书', 'criminal-刑事附带民事调解书'; 行政类：'admin-判决书', 'admin-裁定书', 'admin-调解书', 'admin-行政处罚决定'; 仲裁/公证类：'other_cat-裁决书', 'other_cat-调解书', 'other_cat-赋予强制执行效力的债权文书'; 或 'other'",
+            "otherDetail": "string (仅当selected为'other'时填写)"
+        },
+        "issuingAuthority": "执行依据作出机构，例如'贵州省高级人民法院'",
+        "caseCause": "案由(执行依据文书的具体案由，例如：'劳动纠纷')",
+        "docNumber": "文书号，例如'（2015）黔高民终字第××号'",
+        "effectiveDate": {
+            "detail": "文书的具体生效日期，需要以yyyy-mm-dd(如2025-08-09)格式输出"
+        },
+        "mainJudgment": "执行依据判项主文，裁判文书或类似文书中具体关于执行依据的内容"
+    },
+    "execution": {
+        "summary": "申请执行的请求、事实与理由",
+        "items": {
+            "payment": {
+                "checked": "bool,'True'或'False'，表示是否申请执行金钱给付",
+                "principal": "int, 申请执行金钱给付中的本金的金额，如：1000",
+                "interest": "int, 一般债务利息",
+                "lateFee": "int, 迟延履行利息",
+                "otherCosts": "int, 其他费用"
+            },
+            "action": {
+                "checked": "bool,'True'或'False'，表示是否申请行为执行",
+                "detail": "string, 需要执行的具体行为内容"
+            },
+            "specificObject": {
+                "checked": "bool,'True'或'False'，表示是否申请交付特定物",
+                "detail": "string, 需要交付的特定物"
+            },
+            "other": {
+                "checked": "bool,'True'或'False'，表示是否申请其他事项",
+                "detail": "string, 其他执行事项的具体内容"
+            }
+        },
+        "preservation": {
+            "exists": "'yes' 或 'no', 表示是否有诉前/诉讼保全",
+            "caseNumber": "string, 保全案号 (当exists为'yes'时)",
+            "expiryDate": "string, 保全措施最早到期时间 (当exists为'yes'时)，需要以yyyy-mm-dd(如2025-08-09)格式输出"
+        },
+        "propertyClues": "string, 其他可以提供的被执行人财产线索"
+    },
+    "applicants_natural": [{
+        "name": "string (姓名)",
+        "gender": "'男' or '女' or null",
+        "birthDate": "string (YYYY-MM-DD格式的出生日期)",
+        "nation": "string (民族)",
+        "workUnit": "string (工作单位)",
+        "title": "string (职务)",
+        "phone": "string (联系电话)",
+        "address": "string (住所地/户籍所在地)",
+        "currentAddress": "string (经常居住地)",
+        "idType": "string (证件类型，如'身份证')",
+        "idNumber": "string (证件号码)"
+    }],
+    "applicants_legal": [{
+        "entityName": "string (名称)",
+        "entityAddress": "string (住所地)",
+        "registeredAddress": "string (注册地/登记地)",
+        "legalRepName": "string (法定代表人/负责人)",
+        "legalRepTitle": "string (职务)",
+        "entityPhone": "string (联系电话)",
+        "entityId": "string (统一社会信用代码)",
+        "entityType": "string (从'有限责任公司', '股份有限公司', '上市公司', '其他企业法人', '事业单位', '社会团体', '基金会', '社会服务机构', '机关法人', '农村集体经济组织法人', '城镇农村的合作经济组织法人', '基层群众性自治组织法人', '个人独资企业', '合伙企业', '不具有法人资格的专业服务机构'中选择一个)",
+        "ownership": {
+            "mainType": "'国有' or '民营' or '其他' or null",
+            "stateOwnedSubType": "'控股' or '参股' or null (仅当mainType为'国有'时填写)",
+            "otherDetails": "string | null (仅当mainType为'其他'时填写)"
+        }
+    }],
+    "agents": [{
+        "agentName": "string (姓名)",
+        "agentUnit": "string (单位)",
+        "agentTitle": "string (职务)",
+        "agentPhone": "string (联系电话)",
+        "agentAuthorityType": "'一般授权' or '特别授权' or null",
+        "agentAuthorityDetails": "string | null (仅当agentAuthorityType为'特别授权'时填写)"
+    }],
+    "respondents_natural": [{
+        "name": "string (姓名)",
+        "gender": "'男' or '女' or null",
+        "birthDate": "string (YYYY-MM-DD格式的出生日期)",
+        "nation": "string (民族)",
+        "workUnit": "string (工作单位)",
+        "title": "string (职务)",
+        "phone": "string (联系电话)",
+        "address": "string (住所地/户籍所在地)",
+        "currentAddress": "string (经常居住地)",
+        "idType": "string (证件类型，如'身份证')",
+        "idNumber": "string (证件号码)"
+    }],
+    "respondents_legal": [{
+        "entityName": "string (名称)",
+        "entityAddress": "string (住所地)",
+        "registeredAddress": "string (注册地/登记地)",
+        "legalRepName": "string (法定代表人/负责人)",
+        "legalRepTitle": "string (职务)",
+        "entityPhone": "string (联系电话)",
+        "entityId": "string (统一社会信用代码)",
+        "entityType": "string (从'有限责任公司', '股份有限公司', '上市公司', '其他企业法人', '事业单位', '社会团体', '基金会', '社会服务机构', '机关法人', '农村集体经济组织法人', '城镇农村的合作经济组织法人', '基层群众性自治组织法人', '个人独资企业', '合伙企业', '不具有法人资格的专业服务机构'中选择一个)",
+        "ownership": {
+            "mainType": "'国有' or '民营' or '其他' or null",
+            "stateOwnedSubType": "'控股' or '参股' or null (仅当mainType为'国有'时填写)",
+            "otherDetails": "string | null (仅当mainType为'其他'时填写)"
+        }
+    }]
+}

@@ -1,0 +1,6 @@
+@echo off
+echo Activating virtual environment...
+call .venv\Scripts\activate.bat
+
+echo Starting Celery Worker...
+celery -A app.celery_worker worker --loglevel=info -P gevent

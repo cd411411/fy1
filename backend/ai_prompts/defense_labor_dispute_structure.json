@@ -1,0 +1,76 @@
+{
+  "basicInfo": {
+    "caseNumber": "string | null (从答辩状中提取案号)"
+  },
+  "defendants_legal": [
+    {
+      "entityName": "string (法人或非法人组织名称)",
+      "entityAddress": "string (住所地)",
+      "registeredAddress": "string (注册地/登记地)",
+      "legalRepName": "string (法定代表人/负责人姓名)",
+      "legalRepTitle": "string (法定代表人/负责人职务)",
+      "entityPhone": "string (联系电话)",
+      "entityId": "string (统一社会信用代码)",
+      "entityType": "string (从'有限责任公司', '股份有限公司', '上市公司', '其他企业法人', '事业单位', '社会团体', '基金会', '社会服务机构', '机关法人', '农村集体经济组织法人', '城镇农村的合作经济组织法人', '基层群众性自治组织法人', '个人独资企业', '合伙企业', '不具有法人资格的专业服务机构'中选择一个)",
+      "ownership": {
+        "mainType": "'国有' or '民营' or '其他' or null (所有制性质)",
+        "stateOwnedSubType": "'控股' or '参股' or null (仅当mainType为'国有'时填写)",
+        "otherDetails": "string | null (仅当mainType为'其他'时填写具体内容)"
+      }
+    }
+  ],
+  "agents": [
+    {
+      "hasAgent": "'是' or '否' (是否有委托诉讼代理人)",
+      "agentName": "string | null (代理人姓名)",
+      "agentUnit": "string | null (代理人单位)",
+      "agentTitle": "string | null (代理人职务)",
+      "agentPhone": "string | null (代理人联系电话)",
+      "agentAuthorityType": "'一般授权' or '特别授权' or null (代理权限)"
+    }
+  ],
+  "defenses": {
+    "fullStatement": "string | null (完整的答辩事项陈述)",
+    "d1": {
+      "hasObjection": "'确认' or '异议' or null (对工资支付的诉请的意见)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d2": {
+      "hasObjection": "'确认' or '异议' or null (对未签订书面劳动合同双倍工资诉请的意见)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d3": {
+      "hasObjection": "'确认' or '异议' or null (对加班费诉请的意见)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d4": {
+      "hasObjection": "'确认' or '异议' or null (对未休年休假工资诉请的意见)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d5": {
+      "hasObjection": "'确认' or '异议' or null (对未依法缴纳社保造成经济损失诉请的意见)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d6": {
+      "hasObjection": "'确认' or '异议' or null (对解除劳动合同经济补偿诉请的意见)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d7": {
+      "hasObjection": "'确认' or '异议' or null (对违法解除劳动合同赔偿金诉请的意见)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d8": {
+      "hasObjection": "'确认' or '异议' or null (对劳动仲裁相关情况的意见)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d9": {
+      "content": "string | null (其他需要答辩的事由)"
+    },
+    "d10": {
+      "legal": "string | null (答辩所依据的法律及司法解释的规定，要写明具体条文)"
+    },
+    "d11": {
+      "content": "string | null (证据清单，可另附页)"
+    }
+  }
+}

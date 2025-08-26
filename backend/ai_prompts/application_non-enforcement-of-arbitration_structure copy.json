@@ -1,0 +1,102 @@
+{
+    "docInfo": {
+        "type": {
+            "choice": "string (申请不予执行文书的具体法律文书类型，可选：“仲裁裁决” “仲裁调解书” “公证机关依法赋予强制执行效力的债权文书” “其他法律文书”)",
+            "details": "string (其他法律文书的具体说明，仅当choice为“其他法律文书”时填写)"
+        },
+        "issuingBody": "string (作出裁决或出具强制执行文书的机构，例如'北京仲裁委员会'、'北京市某某公证处')",
+        "docNumber": "string (文书编号)",
+        "enforcementCaseNumber": "string (执行案号)",
+        "serviceDate": {
+            "detail": "string (YYYY-MM-DD格式的文书送达日期)"
+        }
+    },
+    "request": {
+        "main": "string (关于不予执行申请中，申请请求的具体说明)",
+        "factsAndReasons": "string (关于不予执行申请中，事实与理由的具体说明)",
+        "evidenceList": "string (关于不予执行申请中，证据清单的具体说明)",
+        "reasons": {
+            "type": "string (选择不予执行的法律依据来源，可选：'仲裁裁决', '公证债权文书')",
+            "arbitration": {
+                "reason": "string (选择不予执行仲裁裁决的法定事由，可选：'当事人在合同中没有订有仲裁条款或者事后没有达成书面仲裁协议的', '裁决的事项不属于仲裁协议的范围或者仲裁机构无权仲裁的', '仲裁庭的组成或者仲裁的程序违反法定程序的', '裁决所根据的证据是伪造的', '对方当事人向仲裁机构隐瞒了足以影响公正裁决的证据的', '仲裁员在仲裁该案时有贪污受贿，徇私舞弊，枉法裁决行为的', '人民法院认定执行该裁决违背社会公共利益的', '其他')",
+                "reasonOther": "string (仅当reason为'其他'时，填写具体事由)"
+            },
+            "notary": {
+                "reason": "string (选择不予执行公证债权文书的法定事由，可选：'公证债权文书确有错误的', '债务人、担保人已经全部或部分履行债务的', '公证机构出具执行证书违反法定程序的', '其他')",
+                "reasonOther": "string (仅当reason为'其他'时，填写具体事由)"
+            }
+        }
+    },
+    "applicant_natural": [{
+        "identityType": "string (在本案中的身份，可选：“被执行人” “案外人” “其他”)",
+        "identityTypeOther": "string (其他身份,针对其他身份的具体说明，仅identityType为“其他”时填写)",
+        "name": "string (姓名)",
+        "gender": "'男' or '女' or null",
+        "birthDate": "string (YYYY-MM-DD格式的出生日期)",
+        "nation": "string (民族)",
+        "workUnit": "string (工作单位)",
+        "title": "string (职务)",
+        "phone": "string (联系电话)",
+        "address": "string (住所地/户籍所在地)",
+        "currentAddress": "string (经常居住地)",
+        "idType": "string (证件类型，如'身份证')",
+        "idNumber": "string (证件号码)"
+    }],
+    "applicant_legal": [{
+        "identityType": "string (在本案中的身份，可选：“被执行人” “案外人” “其他”)",
+        "identityTypeOther": "string (其他身份,针对其他身份的具体说明，仅identityType为“其他”时填写)",
+        "entityName": "string (名称)",
+        "entityAddress": "string (住所地)",
+        "registeredAddress": "string (注册地/登记地)",
+        "legalRepName": "string (法定代表人/负责人)",
+        "legalRepTitle": "string (职务)",
+        "entityPhone": "string (联系电话)",
+        "entityId": "string (统一社会信用代码)",
+        "entityType": "string (从'有限责任公司', '股份有限公司', '上市公司', '其他企业法人', '事业单位', '社会团体', '基金会', '社会服务机构', '机关法人', '农村集体经济组织法人', '城镇农村的合作经济组织法人', '基层群众性自治组织法人', '个人独资企业', '合伙企业', '不具有法人资格的专业服务机构'中选择一个)",
+        "ownership": {
+            "mainType": "'国有' or '民营' or '其他' or null",
+            "stateOwnedSubType": "'控股' or '参股' or null (仅当mainType为'国有'时填写)",
+            "otherDetails": "string | null (仅当mainType为'其他'时填写)"
+        }
+    }],
+    "agents": [{
+        "agentName": "string (姓名)",
+        "agentUnit": "string (单位)",
+        "agentTitle": "string (职务)",
+        "agentPhone": "string (联系电话)",
+        "agentAuthorityType": "'一般授权' or '特别授权' or null",
+        "agentAuthorityDetails": "string | null (仅当agentAuthorityType为'特别授权'时填写)"
+    }],
+    "other_parties_natural": [{
+        "identityType": "string (在本案中的身份，可选：“申请执行人” “其他”)",
+        "identityTypeOther": "string (其他身份,针对其他身份的具体说明，仅identityType为“其他”时填写)",
+        "name": "string (姓名)",
+        "gender": "'男' or '女' or null",
+        "birthDate": "string (YYYY-MM-DD格式的出生日期)",
+        "nation": "string (民族)",
+        "workUnit": "string (工作单位)",
+        "title": "string (职务)",
+        "phone": "string (联系电话)",
+        "address": "string (住所地/户籍所在地)",
+        "currentAddress": "string (经常居住地)",
+        "idType": "string (证件类型，如'身份证')",
+        "idNumber": "string (证件号码)"
+    }],
+    "other_parties_legal": [{
+        "identityType": "string (在本案中的身份，可选：“申请执行人” “其他”)",
+        "identityTypeOther": "string (其他身份,针对其他身份的具体说明，仅identityType为“其他”时填写)",
+        "entityName": "string (名称)",
+        "entityAddress": "string (住所地)",
+        "registeredAddress": "string (注册地/登记地)",
+        "legalRepName": "string (法定代表人/负责人)",
+        "legalRepTitle": "string (职务)",
+        "entityPhone": "string (联系电话)",
+        "entityId": "string (统一社会信用代码)",
+        "entityType": "string (从'有限责任公司', '股份有限公司', '上市公司', '其他企业法人', '事业单位', '社会团体', '基金会', '社会服务机构', '机关法人', '农村集体经济组织法人', '城镇农村的合作经济组织法人', '基层群众性自治组织法人', '个人独资企业', '合伙企业', '不具有法人资格的专业服务机构'中选择一个)",
+        "ownership": {
+            "mainType": "'国有' or '民营' or '其他' or null",
+            "stateOwnedSubType": "'控股' or '参股' or null (仅当mainType为'国有'时填写)",
+            "otherDetails": "string | null (仅当mainType为'其他'时填写)"
+        }
+    }]
+}

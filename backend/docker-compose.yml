@@ -1,0 +1,99 @@
+# backend/docker-compose.yml
+
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: complaint_generator_backend
+    restart: unless-stopped
+    command: /start-backend.sh # 指定启动 FastAPI 的脚本
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.env
+    volumes:
+      # 持久化存储，用于 RAG 的原始文件和生成的文档
+      - persistent_storage:/app/persistent_storage
+      - outputs:/app/outputs
+      # (可选) 如果你想在开发中热重载代码，可以挂载代码目录
+      # - ./app:/app/app 
+    networks:
+      - app-network
+    depends_on:
+      - db
+      - redis
+      - qdrant
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: complaint_generator_celery
+    restart: unless-stopped
+    command: /start-celery.sh # 指定启动 Celery worker 的脚本
+    env_file:
+      - ./.env
+    volumes:
+      # Worker 也需要访问持久化存储来读取文件
+      - persistent_storage:/app/persistent_storage
+      - outputs:/app/outputs
+    networks:
+      - app-network
+    depends_on:
+      - backend # 确保 backend 的代码和依赖先构建好
+      - redis
+
+  db:
+    image: pgvector/pgvector:pg17
+    container_name: complaint_generator_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-mydatabase}
+      POSTGRES_USER: ${POSTGRES_USER:-myuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mypassword}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-myuser} -d ${POSTGRES_DB:-mydatabase}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:latest
+    container_name: complaint_generator_redis
+    restart: unless-stopped
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: complaint_generator_qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333" # gRPC port
+      - "6334:6334" # REST API port (for UI)
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  qdrant_storage:
+  persistent_storage:
+  outputs:

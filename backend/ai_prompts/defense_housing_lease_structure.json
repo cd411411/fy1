@@ -1,0 +1,151 @@
+{
+  "basicInfo": {
+    "caseNumber": "string | null (从答辩状中提取案号)"
+  },
+  "defendants_natural": [
+    {
+      "name": "string (答辩人姓名)",
+      "gender": "'男' or '女' or null (答辩人性别)",
+      "birthDate": "string (YYYY-MM-DD格式的出生日期)",
+      "nation": "string (答辩人民族)",
+      "workUnit": "string (答辩人工作单位)",
+      "title": "string (答辩人职务)",
+      "phone": "string (答辩人联系电话)",
+      "address": "string (答辩人住所地/户籍所在地)",
+      "currentAddress": "string (答辩人经常居住地)",
+      "idType": "string (答辩人证件类型，如'身份证')",
+      "idNumber": "string (答辩人证件号码)"
+    }
+  ],
+  "defendants_legal": [
+    {
+      "entityName": "string (法人或非法人组织名称)",
+      "entityAddress": "string (住所地)",
+      "registeredAddress": "string (注册地/登记地)",
+      "legalRepName": "string (法定代表人/负责人姓名)",
+      "legalRepTitle": "string (法定代表人/负责人职务)",
+      "entityPhone": "string (联系电话)",
+      "entityId": "string (统一社会信用代码)",
+      "entityType": "string (从'有限责任公司', '股份有限公司', '上市公司', '其他企业法人', '事业单位', '社会团体', '基金会', '社会服务机构', '机关法人', '农村集体经济组织法人', '城镇农村的合作经济组织法人', '基层群众性自治组织法人', '个人独资企业', '合伙企业', '不具有法人资格的专业服务机构'中选择一个)",
+      "ownership": {
+        "mainType": "'国有' or '民营' or '其他' or null (所有制性质)",
+        "stateOwnedSubType": "'控股' or '参股' or null (仅当mainType为'国有'时填写)",
+        "otherDetails": "string | null (仅当mainType为'其他'时填写具体内容)"
+      }
+    }
+  ],
+  "agents": [
+    {
+      "hasAgent": "'是' or '否' (是否有委托诉讼代理人)",
+      "agentName": "string | null (代理人姓名)",
+      "agentUnit": "string | null (代理人单位)",
+      "agentTitle": "string | null (代理人职务)",
+      "agentPhone": "string | null (代理人联系电话)",
+      "agentAuthorityType": "'一般授权' or '特别授权' or null (代理权限)"
+    }
+  ],
+  "defenses": {
+    "fullStatement": "string | null (完整的答辩事项陈述)",
+    "d1": {
+      "hasObjection": "'有' or '无' or null (对支付租金的诉请是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d2": {
+      "hasObjection": "'有' or '无' or null (对迟延支付租金的利息或违约金是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d3": {
+      "hasObjection": "'有' or '无' or null (对交付标的物是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d4": {
+      "hasObjection": "'有' or '无' or null (对解除合同是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d5": {
+      "hasObjection": "'有' or '无' or null (对返还租赁物/押金并赔偿损失是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d6": {
+      "hasObjection": "'有' or '无' or null (对实现债权的费用是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d7": {
+      "hasObjection": "'有' or '无' or null (对诉讼费负担是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d8": {
+      "hasObjection": "'有' or '无' or null (对其他请求是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "d9": {
+      "hasObjection": "'有' or '无' or null (对标的总额是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    }
+  },
+  "facts": {
+    "fullStatement": "string | null (完整的事实与理由陈述)",
+    "f1": {
+      "hasObjection": "'有' or '无' or null (对合同签订情况是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f2": {
+      "hasObjection": "'有' or '无' or null (对签订主体是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f3": {
+      "hasObjection": "'有' or '无' or null (对租赁标的物情况是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f4": {
+      "hasObjection": "'有' or '无' or null (对合同约定租赁期限是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f5": {
+      "hasObjection": "'有' or '无' or null (对合同约定的租金及支付方式是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f6": {
+      "hasObjection": "'有' or '无' or null (对其他费用的约定是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f7": {
+      "hasObjection": "'有' or '无' or null (对合同约定的违约责任是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f8": {
+      "hasObjection": "'有' or '无' or null (对是否约定合同解除条件是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f9": {
+      "hasObjection": "'有' or '无' or null (对租赁物交付时间是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f10": {
+      "hasObjection": "'有' or '无' or null (对押金约定情况是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f11": {
+      "hasObjection": "'有' or '无' or null (对租金支付情况是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f12": {
+      "hasObjection": "'有' or '无' or null (对逾期未付租金情况是否有异议)",
+      "details": "string | null (如有异议，请填写具体异议内容)"
+    },
+    "f13": {
+      "hasObjection": "'有' or '无' or null (有无其他免责/减责事由)",
+      "details": "string | null (如有，请填写具体事由)"
+    },
+    "f14": {
+      "content": "string | null (其他需要说明的内容)"
+    },
+    "f15": {
+      "contract": "string | null (合同中的相关约定)",
+      "legal": "string | null (法律规定，要写明具体条文)"
+    },
+    "f16": {
+      "content": "string | null (证据清单，可另附页)"
+    }
+  }
+}

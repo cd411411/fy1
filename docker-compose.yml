@@ -1,0 +1,98 @@
+# ./docker-compose.yml
+
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: . # 构建上下文是当前目录 (项目根目录)
+      dockerfile: Dockerfile
+    container_name: complaint_generator_backend
+    restart: unless-stopped
+    command: ./deployment/start-backend.sh
+    ports:
+      - "8000:8000"
+    # env_file:
+    #   - ./backend/.env # env 文件在 backend 目录中
+    volumes:
+      - persistent_storage:/app/persistent_storage
+      - outputs:/app/outputs
+    networks:
+      - app-network
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_started # Qdrant 暂无官方 healthcheck
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: complaint_generator_celery
+    restart: unless-stopped
+    command: ./deployment/start-celery.sh
+    # env_file:
+    #   - ./backend/.env
+    volumes:
+      - persistent_storage:/app/persistent_storage
+      - outputs:/app/outputs
+    networks:
+      - app-network
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  db:
+    image: pgvector/pgvector:pg17
+    container_name: complaint_generator_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-myuser} -d $${POSTGRES_DB:-mydatabase}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:latest
+    container_name: complaint_generator_redis
+    restart: unless-stopped
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: complaint_generator_qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  qdrant_storage:
+  persistent_storage:
+  outputs:

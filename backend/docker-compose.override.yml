@@ -1,0 +1,52 @@
+# docker-compose.override.yml.example
+# 开发环境配置示例文件
+# 使用方法:
+# 1. 复制此文件为 docker-compose.override.yml:
+#    cp docker-compose.override.yml.example docker-compose.override.yml
+# 2. 根据需要调整配置
+# 3. 启动服务: docker-compose up -d
+
+version: '3.8'
+
+services:
+  backend:
+    # 开发环境使用 volumes 挂载代码目录以支持热重载
+    volumes:
+      - .:/app
+      - uploads:/app/uploads
+      - outputs:/app/outputs
+      - templates:/app/app/templates 
+      - ai_prompts:/app/ai_prompts
+    # 开发环境使用不同的端口映射 (可选)
+    ports:
+      - "8000:8000"
+    # 开发环境特定的环境变量
+    environment:
+      - DEBUG=true
+      - PADDLE_PDX_MODEL_SOURCE=BOS
+    # 使用 uvicorn 直接运行应用以支持热重载
+    command: [
+      "/wait-for-it.sh", 
+      "db:5432", 
+      "--",
+      "uvicorn", 
+      "app.main:app", 
+      "--host", 
+      "0.0.0.0", 
+      "--port", 
+      "8000", 
+      "--reload"
+    ]
+
+  db:
+    # 开发环境可以使用不同的端口映射以便直接访问数据库
+    ports:
+      - "5432:5432"
+
+# 确保 volumes 定义与主 docker-compose.yml 一致
+volumes:
+  postgres_data:
+  uploads:
+  outputs:
+  templates:
+  ai_prompts:

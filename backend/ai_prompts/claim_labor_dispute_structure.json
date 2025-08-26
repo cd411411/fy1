@@ -1,0 +1,80 @@
+{
+  "basicInfo": {
+    "caseNumber": "string | null (案号)"
+  },
+  "plaintiffs_natural": [
+    {
+      "name": "string (姓名)",
+      "gender": "'男' or '女' or null",
+      "birthDate": "string (YYYY-MM-DD格式的出生日期)",
+      "nation": "string (民族)",
+      "workUnit": "string (工作单位)",
+      "title": "string (职务)",
+      "phone": "string (联系电话)",
+      "address": "string (住所地/户籍所在地)",
+      "currentAddress": "string (经常居住地)",
+      "idType": "string (证件类型，如'身份证')",
+      "idNumber": "string (证件号码)"
+    }
+  ],
+  "defendants_legal": [
+    {
+      "entityName": "string (名称)",
+      "entityAddress": "string (住所地)",
+      "registeredAddress": "string (注册地/登记地)",
+      "legalRepName": "string (法定代表人/负责人)",
+      "legalRepTitle": "string (职务)",
+      "entityPhone": "string (联系电话)",
+      "entityId": "string (统一社会信用代码)",
+      "entityType": "string (从'有限责任公司', '股份有限公司', '上市公司', '其他企业法人', '事业单位', '社会团体', '基金会', '社会服务机构', '机关法人', '农村集体经济组织法人', '城镇农村的合作经济组织法人', '基层群众性自治组织法人', '个人独资企业', '合伙企业', '不具有法人资格的专业服务机构'中选择一个)",
+      "ownership": {
+        "mainType": "'国有' or '民营' or '其他' or null",
+        "stateOwnedSubType": "'控股' or '参股' or null (仅当mainType为'国有'时填写)",
+        "otherDetails": "string | null (仅当mainType为'其他'时填写)"
+      }
+    }
+  ],
+  "agents": [
+    {
+      "agentName": "string (姓名)",
+      "agentUnit": "string (单位)",
+      "agentTitle": "string (职务)",
+      "agentPhone": "string (联系电话)",
+      "agentAuthorityType": "'一般授权' or '特别授权' or null",
+      "agentAuthorityDetails": "string | null (仅当agentAuthorityType为'特别授权'时填写)"
+    }
+  ],
+  "claims": {
+    "fullStatement": "string | null (完整的诉讼请求陈述)",
+    "c1_check": "'yes' or 'no' (是否主张工资支付)",
+    "c1_details": "string | null (工资支付明细)",
+    "c2_check": "'yes' or 'no' (是否主张未签订书面劳动合同双倍工资)",
+    "c2_details": "string | null (未签订书面劳动合同双倍工资明细)",
+    "c3_check": "'yes' or 'no' (是否主张加班费)",
+    "c3_details": "string | null (加班费明细)",
+    "c4_check": "'yes' or 'no' (是否主张未休年休假工资)",
+    "c4_details": "string | null (未休年休假工资明细)",
+    "c5_check": "'yes' or 'no' (是否主张未依法缴纳社会保险费造成的经济损失)",
+    "c5_details": "string | null (未依法缴纳社会保险费造成的经济损失明细)",
+    "c6_check": "'yes' or 'no' (是否主张解除劳动合同经济补偿)",
+    "c6_details": "string | null (解除劳动合同经济补偿明细)",
+    "c7_check": "'yes' or 'no' (是否主张违法解除劳动合同赔偿金)",
+    "c7_details": "string | null (违法解除劳动合同赔偿金明细)",
+    "c8_check": "'yes' or 'no' (是否主张诉讼费用)",
+    "c9_details": "string | null (其他诉讼请求)",
+    "c10_details": "string | null (标的总额)"
+  },
+  "facts": {
+    "fullStatement": "string | null (完整的事实与理由陈述)",
+    "f1_details": "string | null (劳动合同签订情况：合同主体、签订时间、地点、合同名称等)",
+    "f2_details": "string | null (劳动合同履行情况：入职时间、用人单位、工作岗位、工作地点、合同约定的每月工资数额及工资构成、办理社会保险的时间及险种、劳动者实际领取的每月工资数额及工资构成、加班工资计算基数及计算方法、原告加班时间及加班费、年休假等)",
+    "f3_details": "string | null (解除或终止劳动关系情况：解除或终止劳动关系的原因、经济补偿/赔偿金数额等)",
+    "f4_details": "string | null (工伤情况：发生工伤时间、工伤认定情况、工伤伤残等级、工伤费用等)",
+    "f5_details": "string | null (劳动仲裁相关情况：申请劳动仲裁时间、仲裁请求、仲裁文书、仲裁结果等)",
+    "f6_details": "string | null (其他相关情况：如是否是农民工等)",
+    "f7_details": {
+      "legal": "string | null (诉请依据：法律及司法解释的规定，要写明具体条文)"
+    },
+    "f8_details": "string | null (证据清单，可另附页)"
+  }
+}
